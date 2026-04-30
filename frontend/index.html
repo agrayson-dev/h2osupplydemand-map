@@ -414,17 +414,10 @@ const protocol = new pmtiles.Protocol();
 maplibregl.addProtocol('pmtiles', protocol.tile);
 
 
-const baseStyle = {
-  'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
+const baseStyle ='https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
 
 
-const map = new maplibregl.Map({
-  container: 'map',
-  style: baseStyle,
-  center: [-95, 38],   // continental US-ish
-  zoom: 3.6,
-  attributionControl: false,
-});
+
 map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
 map.addControl(new maplibregl.AttributionControl({
   customAttribution: 'Data: BOEM, NOAA, DOE, NREL, USGS, EPA',
@@ -579,7 +572,7 @@ function addLayerToMap(layer) {
       'source-layer': layer.id,
       paint: paint.paint,
       layout: { visibility: layer.defaultOn ? 'visible' : 'none' },
-    }, map.getStyle().layers.at(-1).id);
+    });
   }
 }
 
@@ -763,11 +756,11 @@ const map = new maplibregl.Map({
   zoom: 3.6,
   minZoom: 3,
   maxZoom: 10,
-});
   maxBounds: [
-  [-170, 10],  // SW
-  [-50, 75]    // NE
-],
+    [-170, 10],
+    [-50, 75]
+  ]
+});
 // ============================================================
 // BOOT
 // ============================================================
