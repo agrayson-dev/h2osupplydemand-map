@@ -15,7 +15,7 @@
 
   <style>
   :root {
-    --bg: #0c1015;
+    --bg: #90e0e0;
     --bg-panel: #141a22;
     --bg-panel-2: #1c242f;
     --ink: #e8ecf2;
@@ -24,7 +24,7 @@
     --rule: #232c38;
 
     --supply: #e8a838;        /* warm gold */
-    --demand: #5fb6ce;        /* cool teal */
+    --demand: #f05b5b;        /* red */
     --conservation: #7bc97c;  /* sage */
     --context: #b48ed9;       /* dusty violet */
 
@@ -371,30 +371,30 @@ const TILE_BASE = './tiles';
 
 const LAYERS = [
 
-  { id: 'wave_potential',      title: 'Wave energy potential',     category: 'supply', kind: 'fill' },
-  { id: 'wave_sites',          title: 'Wave sites of interest',    category: 'supply', kind: 'circle' },
-  { id: 'tidal_sites_wecc',    title: 'Tidal sites — West',        category: 'supply', kind: 'circle' },
-  { id: 'tidal_sites_east',    title: 'Tidal sites — East',        category: 'supply', kind: 'circle' },
-  { id: 'tidal_sites_ak',      title: 'Tidal sites — Alaska',      category: 'supply', kind: 'circle' },
-  { id: 'wind_speeds_90m',     title: 'Offshore wind speed (90 m)',category: 'supply', kind: 'fill' },
-  { id: 'wind_lease_areas',    title: 'Wind lease areas',          category: 'supply', kind: 'fill' },
-  { id: 'wind_planning_areas', title: 'Wind planning areas',       category: 'supply', kind: 'fill' },
-  { id: 'coastal_energy_facilities', title: 'Coastal energy facilities', category: 'supply', kind: 'circle' },
+  { id: 'wave_potential', color: '#ffee82',      title: 'Wave energy potential',     category: 'supply', kind: 'fill' },
+  { id: 'wave_sites', color: '#ffee82',          title: 'Wave sites of interest',    category: 'supply', kind: 'circle' },
+  { id: 'tidal_sites_wecc', color: '#5f27cd',    title: 'Tidal sites — West',        category: 'supply', kind: 'circle' },
+  { id: 'tidal_sites_east', color: '#5f27cd',    title: 'Tidal sites — East',        category: 'supply', kind: 'circle' },
+  { id: 'tidal_sites_ak', color: '#5f27cd',      title: 'Tidal sites — Alaska',      category: 'supply', kind: 'circle' },
+  { id: 'wind_speeds_90m', color: '#82ffa5',     title: 'Offshore wind speed (90 m)',category: 'supply', kind: 'fill' },
+  { id: 'wind_lease_areas', color: '#82ffa5',   title: 'Wind lease areas',          category: 'supply', kind: 'fill' },
+  { id: 'wind_planning_areas', color: '#82ffa5', title: 'Wind planning areas',       category: 'supply', kind: 'fill' },
+  { id: 'coastal_energy_facilities',  color: '#FFFFFF', title: 'Coastal energy facilities', category: 'supply', kind: 'circle' },
 
 
-  { id: 'h2_stations',         title: 'Hydrogen fueling stations', category: 'demand', kind: 'circle' },
-  { id: 'h2_hubs',             title: 'DOE hydrogen hubs',         category: 'demand', kind: 'fill' },
-  { id: 'oil_gas_platforms_pacific', title: 'Oil & gas — Pacific', category: 'demand', kind: 'circle' },
-  { id: 'oil_gas_platforms_gom',     title: 'Oil & gas — Gulf',    category: 'demand', kind: 'circle' },
-  { id: 'deepwater_ports',     title: 'Deepwater ports',           category: 'demand', kind: 'circle' },
-  { id: 'principal_ports',     title: 'Principal ports',           category: 'demand', kind: 'circle' },
-  { id: 'aquaculture',         title: 'Aquaculture operations',    category: 'demand', kind: 'circle' },
+  { id: 'h2_stations',    color: '#855f5f',     title: 'Hydrogen fueling stations', category: 'demand', kind: 'circle' },
+  { id: 'h2_hubs',     color: '#855f5f',        title: 'DOE hydrogen hubs',         category: 'demand', kind: 'fill' },
+  { id: 'oil_gas_platforms_pacific', color:  '#3d5169', title: 'Oil & gas — Pacific', category: 'demand', kind: 'circle' },
+  { id: 'oil_gas_platforms_gom', color: '#3d5169',    title: 'Oil & gas — Gulf',    category: 'demand', kind: 'circle' },
+  { id: 'deepwater_ports',  color: '#d94acf',   title: 'Deepwater ports',           category: 'demand', kind: 'circle' },
+  { id: 'principal_ports',  color: '#d94acf',    title: 'Principal ports',           category: 'demand', kind: 'circle' },
+  { id: 'aquaculture',  color: '#ff6b6b',       title: 'Aquaculture operations',    category: 'demand', kind: 'circle' },
 
-  { id: 'mpas',                title: 'Marine protected areas',    category: 'conservation', kind: 'fill' },
+  { id: 'mpas', color: '#5f8560,               title: 'Marine protected areas',    category: 'conservation', kind: 'fill' },
 
-  { id: 'coastal_counties',    title: 'Coastal counties',          category: 'context', kind: 'fill' },
-  { id: 'justice40_dac',       title: 'Justice40 DACs',            category: 'context', kind: 'fill' },
-  { id: 'transmission',        title: 'Transmission lines',        category: 'context', kind: 'line' },
+  { id: 'coastal_counties',   color: '#48b8b2',  title: 'Coastal counties',          category: 'context', kind: 'fill' },
+  { id: 'justice40_dac',     color: '#d9a44a',   title: 'Justice40 DACs',            category: 'context', kind: 'fill' },
+  { id: 'transmission', color: '#FFFFFF',       title: 'Transmission lines',        category: 'context', kind: 'line' },
 
   { id: 'parcels',             title: 'Parcels (synergy score)',   category: 'supply', kind: 'fill', defaultOn: true, isParcels: true },
 ];
@@ -419,7 +419,7 @@ const baseStyle = {
   glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
   sources: {},
   layers: [
-    { id: 'background', type: 'background', paint: { 'background-color': '#0c1015' } },
+    { id: 'background', type: 'background', paint: { 'background-color': '#90e0e0' } },
   ],
 };
 
@@ -460,7 +460,7 @@ function paintForLayer(layer) {
           ['boolean', ['feature-state', 'hover'], false], 0.85,
           0.55,
         ],
-        'fill-outline-color': '#0c1015',
+        'fill-outline-color': '#90e0e0',
       },
     };
   }
@@ -552,7 +552,7 @@ function paintForLayer(layer) {
       'circle-radius':       ['interpolate', ['linear'], ['zoom'], 4, 2.5, 12, 7],
       'circle-color':        cat,
       'circle-stroke-width': 1,
-      'circle-stroke-color': '#0c1015',
+      'circle-stroke-color': '#90e0e0',
       'circle-opacity':      0.9,
     },
   };
