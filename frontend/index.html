@@ -390,7 +390,7 @@ const LAYERS = [
   { id: 'principal_ports',  color: '#d94acf',    title: 'Principal ports',           category: 'demand', kind: 'circle' },
   { id: 'aquaculture',  color: '#ff6b6b',       title: 'Aquaculture operations',    category: 'demand', kind: 'circle' },
 
-  { id: 'mpas', color: '#5f8560,               title: 'Marine protected areas',    category: 'conservation', kind: 'fill' },
+  { id: 'mpas', color: '#5f8560',               title: 'Marine protected areas',    category: 'conservation', kind: 'fill' },
 
   { id: 'coastal_counties',   color: '#48b8b2',  title: 'Coastal counties',          category: 'context', kind: 'fill' },
   { id: 'justice40_dac',     color: '#d9a44a',   title: 'Justice40 DACs',            category: 'context', kind: 'fill' },
@@ -415,13 +415,7 @@ maplibregl.addProtocol('pmtiles', protocol.tile);
 
 
 const baseStyle = {
-  version: 8,
-  glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
-  sources: {},
-  layers: [
-    { id: 'background', type: 'background', paint: { 'background-color': '#90e0e0' } },
-  ],
-};
+  'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
 
 
 const map = new maplibregl.Map({
@@ -585,7 +579,7 @@ function addLayerToMap(layer) {
       'source-layer': layer.id,
       paint: paint.paint,
       layout: { visibility: layer.defaultOn ? 'visible' : 'none' },
-    });
+    }, map.getStyle().layers.at(-1).id);
   }
 }
 
@@ -761,7 +755,19 @@ function wireParcelInteractions() {
     hoveredParcelId = null;
   });
 }
-
+  
+const map = new maplibregl.Map({
+  container: 'map',
+  style: baseStyle,
+  center: [-95, 38],
+  zoom: 3.6,
+  minZoom: 3,
+  maxZoom: 10,
+});
+  maxBounds: [
+  [-170, 10],  // SW
+  [-50, 75]    // NE
+],
 // ============================================================
 // BOOT
 // ============================================================
