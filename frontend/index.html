@@ -416,7 +416,18 @@ maplibregl.addProtocol('pmtiles', protocol.tile);
 
 const baseStyle ='https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
 
-
+const map = new maplibregl.Map({
+  container: 'map',
+  style: baseStyle,
+  center: [-95, 38],
+  zoom: 3.6,
+  minZoom: 3,
+  maxZoom: 10,
+  maxBounds: [
+    [-170, 10],
+    [-50, 75]
+  ]
+});
 
 map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
 map.addControl(new maplibregl.AttributionControl({
@@ -749,18 +760,7 @@ function wireParcelInteractions() {
   });
 }
   
-const map = new maplibregl.Map({
-  container: 'map',
-  style: baseStyle,
-  center: [-95, 38],
-  zoom: 3.6,
-  minZoom: 3,
-  maxZoom: 10,
-  maxBounds: [
-    [-170, 10],
-    [-50, 75]
-  ]
-});
+
 // ============================================================
 // BOOT
 // ============================================================
