@@ -440,7 +440,7 @@ map.addControl(new maplibregl.AttributionControl({
 
 
 function paintForLayer(layer) {
-  const cat = COLOR[layer.category];
+  const cat = layer.color || COLOR[layer.category];
 
   // Special-case: parcels with synergy score color ramp
   if (layer.isParcels) {
